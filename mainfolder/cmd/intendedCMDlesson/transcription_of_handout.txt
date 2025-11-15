@@ -1,0 +1,77 @@
+STEP BY STEP GUIDE TO WINDOWS COMMAND LINE
+
+INTRODUCTION TO THE WINDOWS COMMAND LINE
+The Windows Command Line (Command Prompt) is a text-based interface for interacting with the operating system. To open quickly hit the windows key and type "cmd" [or use win+r -> cmd -> enter]
+Path = (source or destination) example "c:\users\Admin\Desktop"
+
+BASIC NAVIGATION COMMANDS
+Use the following commands to navigate through directories:
+dir - List the coontents of a directory
+cd - change directory. (cd c:\Users\Admin\Desktop)
+cd.. - Move to the parent directory
+cls - Clear the command line screen
+
+FILE AND DIRECTORY OPERATIONS
+To manage file sand directories:
+
+mkdir "path\folder_name" - Create a new directory. (use _ for naming or it'll create multiple folder/directories)
+Example: mkdir c:\Users\Admin\Desktop\folder_name
+rmdir "path\folder_name" - Remove a directory.
+
+copy <source> <destination> - Copy a file. if you're in the directory of the file you can just use the file name and destination path, "copy testfile.txt c:\Users\Admin\Desktop")
+
+move <source> <destination> - Move a file
+
+del "path\file_name.txt" - permanently delete a file
+
+NETWORKING COMMANDS
+Troubleshoot and manage networks using:
+
+ipconfig - View network configuration.
+ping <address> - Test network connectivity. (can ping ip address or url - "ping google.com")
+tracert <address> - trace the route packets take.
+netstat - display network statistics
+
+PROCESS MANAGEMENT
+To manage processes:
+
+tasklist - view running processes
+taskkill /im <name> /f - kill a process by name [/im <name> seems to replace "IMAGENAME eq <name>". I don't remember what uses the second syntax, probably linux]
+taskkill /pid <PID> /f - Kill a process by PID# [in linux it's just "kill <pid>". also, you usually want to use the /r or /t (I forget which) flags, to kill subprocesses as well]
+
+POWERSHELL VS COMMAND LINE
+PowerShell provides advanced feature scompared to Command Prompt, including scripting capabilities and integration with modern tools.
+[I like to avoid using powershell as an exercise, but there are some solid options it gives that offer 1 line options that CMD would need 5+ lines for]
+
+FINAL REVIEW AND RESOURCES
+Key commands to remember: 'dir', 'cd', 'ipconfig', 'ping', 'tasklist'
+For more learning resources, explore official documentation and online tutorials
+
+SCRIPTING WITH BATCH FILES
+Steps to create and run a batch script:
+1. Open Notepad from Desktop
+2. Copy the text below
+
+ @echo off
+ echo Welcome to batch scripting!
+ echo
+ mkdir C:\LabDirectory
+ echo This is a test file. >C:\LabDirectory\testfile.txt
+ copy C:\LabDirectory\testfile.txt C:\LabDirectory\copiedfile.txt
+ echo Here are the files in C:\LabDirectory:
+ dir C:\LabDirectory
+ pause
+
+3. Save the file as labscript.bat
+4. Run the script using the command prompt: "labscript.bat"
+ Check your work, change the directory to the lab directory and view its content. You should see bot htestfile.txt and copiedfile.txt
+ 
+ cd c:\LabDirectory
+ dir
+
+HOW TO RESET
+In order to reset we need to remove the files first. Keep in mind that you can't remove or delete a folder (directory) if it's populated with another file.
+ 1. Del c:\LabDirectory\Testfile.txt
+ 2. Del c:\LabDirectory\copiedfile.txt
+ 3. cd c:\
+ 4. rmdir LabDirectory

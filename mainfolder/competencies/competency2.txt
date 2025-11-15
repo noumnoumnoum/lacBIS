@@ -1,0 +1,8 @@
+Item, Quantity, Description, Unit Price, Total
+R001, 2, Lamp, 10.00. 20.00
+T005, 1, Thermostat, 200.00, 200.00
+
+Item/Quantity/Description/Unit Price/Total
+////
+////
+Table1
