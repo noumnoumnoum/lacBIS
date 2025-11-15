@@ -1,0 +1,93 @@
+basic crud operations for all datbase records include Create, Read/retrieve, Update, and Delete
+	create
+		SQL: 
+			INSERT INTO product (name, category, price)
+			VALUES ('IPhone', 'electronics', 699(;
+		MongoDB shell:
+			db.products.insertOne({
+				name: 'IPhone',
+				category: 'electronics',
+				price: 699,
+				});
+	read/retrieve
+		SQL:
+			SELECT * FROM product
+			WHERE category = 'electronics';
+		MongoDB shell:
+			db.products.find({ category: 'electronics' });
+	read/retrieve
+		SQL:
+			SELECT name, price FROM product
+			WHERE category = 'electronics';
+		MongoDB shell:
+			db.products
+				.find({ category: 'electronics' })
+				.project({ name: 1, price: 1});
+	update
+		SQL:
+			UPDATE product
+			SET category = 'phones'
+			WHERE name = 'IPhone;
+		MongoDB shell:
+			db.products.updateOne(
+				{name: 'IPhone'},
+				{ $set: { category: 'phones' } }
+			);
+	delete
+		SQL:
+			DELTE FROM product
+			WHERE name = 'IPhone';
+		MongoDB shell:
+			db.products.deleteOne({ name : 'IPhone' });
+
+for SQL practice, try https://www.w3schools.com/sql/trysql.asp?filename=trysql_select_all
+for MongoDB practice, try https://docs.mongodb.com/manual/tutorial/getting-started/
+
+MongoDB usesthe BSON file format, which resembles JSON but is binary. It reads more efficiently, but it's also more of a pain for a human.
+Importing and exporting can be done via mongodump and mongorestore
+
+~~~~~~~~~~~~~~~~~~~
+MongoDB shell
+~~~~~~~~~~~~~~~~~~~
+COMMANDS:
+	.insertOne
+	.insertMany
+	.find
+	.findOne
+	.updateOne
+	.replaceOne
+	.deleteOne
+	.deleteMany
+
+CREATE:
+	creating entries in a collection:
+		db.countries.insertOne({
+			name: 'Argentina',
+			continent: 'South America',
+		});
+	creating multiple entries at once:
+		db.countries.insertMany([
+			{ name: 'Finland', continent: 'Europe' },
+			{ name: 'Greece', continent: 'Europe' },
+		]);
+READ:
+	db.countries.find(); to read an array of all entries
+	db.countries.find({ continent: 'Europe' }); to search for entries meeting certain criteria
+	db.countries.findOne({ name: 'Greece' }); to find a single entry, usually testing new databases (for me)
+UPDATE:
+	changing an entry by setting its population:
+		db.countries.updateOne(
+			{ name: 'Argentina' },
+			{ $set: { population: 44 } }
+		);
+	replacing an entry:
+		db.countries.replaceOne(
+			{ name: 'Brazil' },
+			{ name: 'Brazil', population: 210 }
+		);
+DELETE:
+	deleting an entry:
+		db.countries.deleteOne({ name: 'Finland' });
+	deleting all entries:
+		db.countries.deleteMany({}); but why though
+

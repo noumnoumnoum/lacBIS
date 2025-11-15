@@ -1,0 +1,20 @@
+file = open("message.txt", w, encoding="utf-8")
+file.write("hello, world\n")
+file.write("end")
+file.close()
+
+file = open("message.txt", encoding = "utf-8")
+file_contents = file.read()
+
+with open("message.txt", encoding="utf-8") as file_obj:#"with" closes automatically. it's standard practice.
+    content=file_obj.read()
+
+
+file.mode #pretty cool
+file.read(99) #reads next 99 bytes. also cool
+file.readline() #reads next line. you might actually use this one, since it'd help with extracting data from huge
+#...databases with a great many columns. which also happens to be a use case for python for data analysis
+#because excel is limited to like 16k columns. because it sucks.
+#excel is for casuals
+#don't be a casual
+#if you're reading this hire me
