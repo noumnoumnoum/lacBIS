@@ -91,3 +91,24 @@ DELETE:
 	deleting all entries:
 		db.countries.deleteMany({}); but why though
 
+COUNTING:
+	db.todos.find({find({ completed: false}).count();
+QUERY SELECTORS
+	$text
+	$regex
+	$gt, $gte, $lt, $lte
+	$in
+	db.products.find({ name: { $text: 'fairphone' } });
+	db.products.find({
+		category: 'phone',
+		price: { $lt: 300 },
+	});
+	db.products.find({
+		category: { $in: ['laptop', 'tablet'] },
+		price: { $lt: 400 },
+	});
+PROJECTIONS
+	db.products
+		.find({ category: 'phone' })
+		.project({ name: 1, price: 1 });
+
